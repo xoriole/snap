@@ -6,7 +6,7 @@ description: >
   Privacy using Tor-inspired anonymous onion routing
 
 grade: devel
-confinement: devmode
+confinement: classic
 base: core18
 
 architectures:
