@@ -9,6 +9,9 @@ grade: devel
 confinement: devmode
 base: core18
 
+architectures:
+  - build-on: amd64
+
 parts:
   python-deps:
     plugin: python
@@ -29,7 +32,7 @@ parts:
       DEB_API="https://jenkins-ci.tribler.org/job/Build-Tribler_release/job/Build/lastSuccessfulBuild/artifact/tribler_7.2.0-exp1-317-g4f032de52_all.deb"
       VERSION=$(echo $DEB_API| rev | cut -d/ -f1|rev|cut -d_ -f2|cut -d'-' -f 1,2)
       echo $VERSION > $SNAPCRAFT_STAGE/version
-      
+
       snapcraftctl build
 
       set -ex
