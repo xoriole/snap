@@ -7,7 +7,6 @@ description: >
 
 grade: devel
 confinement: classic
-base: core18
 
 architectures:
   - build-on: amd64
@@ -51,10 +50,9 @@ parts:
       - desktop-qt5
     plugin: dump
     source-type: deb
-    source: https://jenkins-ci.tribler.org/job/Build-Tribler_release/job/Build/lastSuccessfulBuild/artifact/tribler_7.2.0-exp1-317-g4f032de52_all.deb
+    source: $DEB_PAKAGE_URL
     override-build: |
-      DEB_API="https://jenkins-ci.tribler.org/job/Build-Tribler_release/job/Build/lastSuccessfulBuild/artifact/tribler_7.2.0-exp1-317-g4f032de52_all.deb"
-      VERSION=$(echo $DEB_API| rev | cut -d/ -f1|rev|cut -d_ -f2|cut -d'-' -f 1,2)
+      VERSION=$(echo $DEB_PACKAGE_URL| rev | cut -d/ -f1|rev|cut -d_ -f2|cut -d'-' -f 1,2)
       echo $VERSION > $SNAPCRAFT_STAGE/version
 
       snapcraftctl build
